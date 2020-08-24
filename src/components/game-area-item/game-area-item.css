@@ -1,0 +1,25 @@
+button {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #777;
+  border: none;
+  cursor: pointer;
+}
+.blue {
+  background-color: blue;
+  border-top-left-radius: 100%;
+}
+.red {
+  background-color: red;
+  border-top-right-radius: 100%;
+}
+.yellow {
+  background-color: yellow;
+  border-bottom-left-radius: 100%;
+}
+.green {
+  background-color: green;
+  border-bottom-right-radius: 100%;
+}
