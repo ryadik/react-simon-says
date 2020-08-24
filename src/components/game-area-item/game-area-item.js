@@ -1,15 +1,15 @@
 import React, {Component} from "react";
-import './game-area-item.css'
+import './game-area-item.sass'
 
 class GameAreaItem extends Component {
   render() {
-    const {id, color, active, onLol} = this.props
+    const {id, color, active, onActive} = this.props
     let classNames = `${color}`
-    classNames += (active) ? ' active' : ''
+    classNames += (active) ? ` ${color}_active` : ''
 
     return (
         <>
-          <button onClick={onLol} className={classNames} data-id={id}>
+          <button onClick={onActive} className={classNames} data-id={id}>
 
           </button>
         </>
