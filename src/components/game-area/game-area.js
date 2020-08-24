@@ -1,15 +1,17 @@
 import React, {Component} from "react";
+
 import GameAreaItem from "../game-area-item/game-area-item";
+
 import './game-area.css'
 
 class GameArea extends Component {
   generateItem = (arr) => {
-    const {onLol} = this.props
+    const {onActive} = this.props
     const newArr = arr.map(item => {
       return (
           <li key={item.key}>
             <GameAreaItem
-                onLol={() => onLol(item.key)}
+                onActive={() => onActive(item.key)}
                 color={item.color}
                 id={item.id}
                 active={item.active}
@@ -25,7 +27,7 @@ class GameArea extends Component {
     const {buttons} = this.props
     const elems = this.generateItem(buttons)
     return (
-        <ul>
+        <ul className="game-area">
           {elems}
         </ul>
     )
