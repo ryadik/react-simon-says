@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+
 import GameArea from './components/game-area/game-area'
+import OptionsArea from "./components/options-area/options-area";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      round: 0,
+      gameSequence: [],
+      userSequence: [],
       buttons: [
         {color: 'blue', key: this.randomKey(), id: 1, active: false},
-        {color: 'red', key: this.randomKey(), id: 2, active: true},
+        {color: 'red', key: this.randomKey(), id: 2, active: false},
         {color: 'yellow', key: this.randomKey(), id: 3, active: false},
         {color: 'green', key: this.randomKey(), id: 4, active: false},
       ]
@@ -18,10 +23,52 @@ class App extends Component {
     return Math.random().toString(36).substr(6)
   }
 
-  onLol = (key) => {
-    const index = this.state.buttons.findIndex(elem => elem.key === key)
-    console.log(index)
-    // console.log(this.state.buttons)
+  randomNum = () => {
+    return Math.round(0.5 + Math.random() * 4)
+  }
+
+  generateStep = () => {
+    this.setState(({gameSequence}) => {
+      const newArr = gameSequence
+      newArr.push(this.randomNum)
+
+      return {
+        gameSequence: newArr
+      }
+    })
+  }
+
+  onActive = (key) => {
+    const updateState = (boolean) => {
+      this.setState(({buttons}) => {
+        const newArr = buttons
+        newArr.forEach(item => {
+          if (item.key === key) {
+            item.active = !!boolean
+          }
+        })
+        return {
+          buttons: newArr
+        }
+      })
+    }
+    const req = new Promise((resolve, reject) => {
+      updateState(1)
+
+      setTimeout(() => {
+        resolve(key)
+      }, 1000)
+
+    })
+    .finally(() => {
+        updateState(0)
+    })
+
+    console.log(req)
+  }
+
+  startGame = () => {
+    this
   }
 
   render() {
@@ -30,7 +77,11 @@ class App extends Component {
         <h1 className="title">Simon Says</h1>
         <GameArea
           buttons={this.state.buttons}
-          onLol={this.onLol}
+          onActive={this.onActive}
+        />
+        <OptionsArea
+            round={this.state.round}
+            startGame={this.startGame}
         />
       </div>
     )
