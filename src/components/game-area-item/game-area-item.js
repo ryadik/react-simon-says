@@ -9,8 +9,9 @@ class GameAreaItem extends Component {
 
     return (
         <>
-          <button onClick={onActive} className={classNames} data-id={id}>
-
+          <button onClick={onActive}
+                  className={classNames}
+                  data-id={id}>
           </button>
         </>
     )
