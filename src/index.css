@@ -9,6 +9,7 @@ body {
 
 button:focus, input:focus {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
