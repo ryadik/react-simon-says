@@ -38,7 +38,9 @@ export default class OptionsArea extends Component {
         <div className="options-area">
           <OptionsRound round={round}/>
           <StartButton startGame={() => startGame()}/>
-          {elems}
+          <div className="diff-levels">
+            {elems}
+          </div>
         </div>
     )
   }
