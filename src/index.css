@@ -7,6 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button:focus, input:focus {
+  outline: none;
+}
+
+a {
+  font-family: inherit;
+  font-weight: bold;
+  color: #a29bfe;
+  text-decoration: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
