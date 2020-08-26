@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import './App.sass'
+
 import GameArea from './components/game-area/game-area'
 import OptionsArea from "./components/options-area/options-area";
 
@@ -207,17 +209,33 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <h1 className="title" onClick={this.show}>Simon Says</h1>
-        <GameArea
-          buttons={this.state.buttons}
-          onActive={this.onActive}
-        />
-        <OptionsArea
-            round={this.state.round}
-            startGame={this.startGame}
-            diffs={this.state.difficulties}
-            setDelay={this.setDelay}
-        />
+        <section className="app__content">
+          <header className="header">
+            <h1 className="header__title" onClick={this.show}>
+              <span className="blue">Sim</span>
+              <span className="red">on</span>
+              &#160;
+              <span className="yellow">Sa</span>
+              <span className="green">y's</span>
+            </h1>
+          </header>
+          <main>
+            <GameArea
+              buttons={this.state.buttons}
+              onActive={this.onActive}
+            />
+            <OptionsArea
+                round={this.state.round}
+                startGame={this.startGame}
+                diffs={this.state.difficulties}
+                setDelay={this.setDelay}
+            />
+          </main>
+        </section>
+        <footer>
+          <p>©Copyright - 2020</p>
+          <p>Created by <a href="https://github.com/K1nGsmaN-hub" target="_blank">K1nGsmaN</a></p>
+        </footer>
       </div>
     )
   }
