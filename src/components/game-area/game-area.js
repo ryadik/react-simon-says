@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import GameAreaItem from "../game-area-item/game-area-item";
 
-import './game-area.css'
+import './game-area.sass'
 
 class GameArea extends Component {
   generateItem = (arr) => {

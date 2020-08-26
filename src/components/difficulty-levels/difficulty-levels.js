@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 
+import './difficulty-levels.sass'
+
 export default class DifficultyLevels extends Component {
   render() {
     const {level, delay, text, setDelay} = this.props
