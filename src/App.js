@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
     this.state = {
       round: 0,
+      maxRounds: (localStorage.getItem('maxRounds') === null) ? 0 : localStorage.getItem('maxRounds'),
       delay: 1500,
       gameSequence: [],
       userSequence: [],
@@ -153,6 +154,9 @@ class App extends Component {
   newRound = async (start = false) => {
     this.setState(({round}) => {
       const roundNum = (start) ? 1 : ++round
+
+      this.updateMaxRounds(roundNum)
+
       return {
         round: roundNum
       }
@@ -189,13 +193,25 @@ class App extends Component {
   } // data processing of sequences
   gameOver = () => {
     this.clearSequence(true)
-    this.setState({round: 0, isGaming: false})
+    this.setState({
+      maxRounds: localStorage.getItem('maxRounds'),
+      round: 0,
+      isGaming: false
+    })
 
     console.log('Game Over :(')
   } // end game session
 
 
   // other
+  updateMaxRounds = (round) => {
+    if ((localStorage.getItem('maxRounds') &&
+        localStorage.getItem('maxRounds') < round) ||
+        localStorage.getItem('maxRounds') === null) {
+
+      localStorage.setItem('maxRounds', round)
+    }
+  }
   setDelay = (delay) => {
     this.setState({delay})
   } // delay between activating buttons
@@ -236,6 +252,7 @@ class App extends Component {
               />
               <OptionsArea
                   round={this.state.round}
+                  maxRounds={this.state.maxRounds}
                   startGame={this.startGame}
                   diffs={this.state.difficulties}
                   setDelay={this.setDelay}

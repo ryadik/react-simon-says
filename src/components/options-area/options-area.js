@@ -25,18 +25,13 @@ export default class OptionsArea extends Component {
   }
 
   render() {
-    const {startGame, diffs} = this.props
-
-    let {round} = this.props
-    if (round === undefined || round === 0 || isNaN(round)) {
-      round = 0
-    }
+    const {startGame, diffs, round, maxRounds} = this.props
 
     const elems = this.generateItem(diffs)
 
     return(
         <div className="options-area">
-          <OptionsRound round={round}/>
+          <OptionsRound round={round} maxRounds={maxRounds}/>
           <StartButton startGame={() => startGame()}/>
           <div className="diff-levels">
             {elems}

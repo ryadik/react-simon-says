@@ -4,10 +4,13 @@ import './options-round.sass'
 
 export default class OptionsRound extends Component {
   render() {
-    const {round} = this.props
+    const {round, maxRounds} = this.props
 
     return (
-        <h2>Round {round}</h2>
+        <>
+          <h2>Round {round}</h2>
+          <p>Record {maxRounds}</p>
+        </>
     )
   }
 }
